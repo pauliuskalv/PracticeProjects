@@ -11,5 +11,3 @@ WebBrowser ( ***** )
 Password Manager ( ****- )
 Receptu valdymo programa ( ***-- )
 Restorano valdymo sistema ( ***-- )
-Parkingo valdymo sistema ( ***-- )
-
