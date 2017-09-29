@@ -9,6 +9,7 @@ https://en.wikipedia.org/wiki/Gecko_(software)
 Idejos ( kolkas ):
 WebBrowser ( ***** )
 Password Manager ( ****- )
+Receptu valdymo programa ( ***-- )
 Restorano valdymo sistema ( ***-- )
 Parkingo valdymo sistema ( ***-- )
 
