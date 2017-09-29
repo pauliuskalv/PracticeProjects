@@ -1,6 +1,6 @@
-package Encryption;
+package LogInController;
 
-import Encryption.Encryption;
+import LogInController.Encryption;
 import java.io.Serializable;
 
 public class Password implements Serializable {
