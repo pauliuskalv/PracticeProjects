@@ -5,11 +5,11 @@ import java.util.Vector;
 public class Product 
 {
 	String name;
-	double price;
+	public double price;
 	int id;
 	
-	Vector attributes = new Vector<Attribute>();
-
+	public Vector attributes = new Vector<Attribute>();
+	
 	public Product(String name, double price, int id, Vector attributes) 
 	{
 		this.name = name;
@@ -17,7 +17,4 @@ public class Product
 		this.id = id;
 		this.attributes = attributes;
 	}
-	
-	
-	
 }
