@@ -6,18 +6,20 @@ import dataManagement.Product;
 
 public class Service 
 {
-	Vector serviceVector = new Vector<Product>();
 	double sum;
+	String currency = "$";				// currency used when printing receipts (system administrator should be able to change it)
 	
-	public Service(Vector<Product> serviceVector) 
+	public void print(Vector<Product> serviceVector) 
 	{
-		this.serviceVector = serviceVector;
-		for(Product x : serviceVector)
+		// print to graphical user interface when it is created
+		// using console for now
+		for(Product product : serviceVector)
 		{
-			this.sum += x.price;
+			System.out.println(product.name + " - " + product.price);
+			sum += product.price;						// calculates overall sum 
 		}
+		System.out.println();
+		System.out.println("Total: " + sum + currency);
 	}
-	
-	
 	
 }

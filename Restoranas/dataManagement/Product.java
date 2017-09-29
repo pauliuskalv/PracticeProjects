@@ -4,7 +4,7 @@ import java.util.Vector;
 
 public class Product 
 {
-	String name;
+	public String name;
 	public double price;
 	int id;
 	
