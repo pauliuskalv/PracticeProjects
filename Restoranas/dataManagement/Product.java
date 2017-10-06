@@ -8,9 +8,9 @@ public class Product
 	public double price;
 	int id;
 	
-	public Vector attributes = new Vector<Attribute>();
+	Vector<Attribute> attributes = new Vector<Attribute>();
 	
-	public Product(String name, double price, int id, Vector attributes) 
+	public Product(String name, double price, int id, Vector<Attribute> attributes) 
 	{
 		this.name = name;
 		this.price = price;
