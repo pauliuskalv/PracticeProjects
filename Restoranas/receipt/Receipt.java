@@ -2,21 +2,23 @@ package receipt;
 
 import java.util.Vector;
 
-import dataManagement.Product;
+import dataManagement.*;
 
-public class Service 
+public class Receipt 
 {
 	double sum;
 	String currency = "$";													// currency used when printing receipts (system administrator should be able to change it)
 	
-	Vector<Product> services = new Vector<Product>();
-
+	Vector<Product> products = new Vector<Product>();
+	Vector<Service> otherServices = new Vector<Service>();
+	
+	
 	//-------------------------------------
 	// methods
 	
 	public void order (Product product)
 	{
-		services.add(product);
+		products.add(product);
 	}
 	
 	public void print(Vector<Product> serviceVector) 
