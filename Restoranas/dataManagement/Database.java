@@ -1,17 +1,37 @@
 package dataManagement;
 
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 import java.util.Vector;
 
-public class Database 
+public class Database 	// store everything in vectors
 {
-
-
-	Vector<Attribute> attributes = new Vector<Attribute>();
+	Vector<Service> fullList = new Vector<Service>();
+	Vector<Service> serviceList = new Vector<Service>();
+	Vector<Product> productList = new Vector<Product>();
 	
-	attributes.add(new Attribute("consumable"));			
+	public Service createService(String name, double price)
+	{
+		Service service = new Service(name, price);
+		fullList.add(service);
+		serviceList.add(service);
+		return service;
+	}
+	public Product createProduct(String name, double price, Vector<Attribute> attributes)
+	{
+		Product product = new Product(name, price, attributes);
+		fullList.add(product);
+		productList.add(product);
+		return product;
+	}
 	
-    Product product = new Product("cookie", 2, 0, attributes);
-
+	public void removeService(Service service)
+	{
+		fullList.remove(service);					// as far as I remember there is no need to check if vector contains the item before removing it
+		serviceList.remove(service);
+	}
+	public void removeProduct(Product product)
+	{
+		fullList.remove(product);
+		productList.remove(product);
+	}
+	
 }

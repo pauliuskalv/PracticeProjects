@@ -7,6 +7,8 @@ import dataManagement.*;
 public class Receipt 														// create new receipt for every customer
 {
 	double sum;
+	
+	double waitersFee = 0;													// percentage of what waiter gets of the total (system administrator should be able to change it)
 	String currency = "$";													// currency used when printing receipts (system administrator should be able to change it)
 	
 	Vector<Product> products = new Vector<Product>();
@@ -42,6 +44,14 @@ public class Receipt 														// create new receipt for every customer
 			sum += service.price;
 		}
 		System.out.println();
+		
+		if(waitersFee != 0)
+		{
+			System.out.println("Waiter`s fee: " + waitersFee + "%");
+			sum = sum + (sum * (waitersFee / 100));
+			System.out.println();
+		}
+		
 		System.out.println("Total: " + sum + currency);
 	}
 	
