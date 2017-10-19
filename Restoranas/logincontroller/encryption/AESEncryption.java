@@ -1,6 +1,6 @@
-package LogInController.Encryption;
+package logincontroller.encryption;
 
-import LogInController.Encryption.IEncrypt;
+import logincontroller.encryption.IEncrypt;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;

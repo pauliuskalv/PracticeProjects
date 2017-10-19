@@ -1,4 +1,4 @@
-package LogInController.Encryption;
+package logincontroller.encryption;
 
 import javax.crypto.SecretKey;
 

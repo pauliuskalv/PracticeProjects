@@ -1,4 +1,4 @@
-package LogInController.Encryption;
+package logincontroller.encryption;
 
 public interface IEncrypt
 {

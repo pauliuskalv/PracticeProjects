@@ -1,4 +1,4 @@
-package LogInController.Encryption;
+package logincontroller.encryption;
 
 import java.security.spec.InvalidKeySpecException;
 import java.security.NoSuchAlgorithmException;
@@ -26,7 +26,13 @@ public class Hasher {
 			SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1") ;
 			return keyFactory.generateSecret(pbeKeySpec).getEncoded();
 		} catch ( NoSuchAlgorithmException e ) {
+			/**
+			 * TODO
+			 */
 		} catch ( InvalidKeySpecException e ) {
+			/**
+			 * TODO
+			 */
 		} finally {
 			pbeKeySpec.clearPassword();
 		}

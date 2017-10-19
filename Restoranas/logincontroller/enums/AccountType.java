@@ -1,4 +1,4 @@
-package LogInController.Enums;
+package logincontroller.enums;
 
 public enum AccountType
 { 

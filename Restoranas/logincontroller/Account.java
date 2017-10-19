@@ -1,7 +1,7 @@
-package LogInController;
+package logincontroller;
 
-import LogInController.Password;
-import LogInController.Enums.AccountType;
+import logincontroller.Password;
+import logincontroller.enums.AccountType;
 
 public class Account {
     String username;
