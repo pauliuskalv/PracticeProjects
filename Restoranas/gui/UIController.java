@@ -1,27 +1,41 @@
 package gui;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import gui.enums.EScene;
 
-public class UIController
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class UIController extends Application
 {
-    private static final int sizeX = 500;
-    private static final int sizeY = 500;
-    private static JFrame mainFrame;
+    private static Stage window;
     public static void main (String[] args)
     {
-        mainFrame = new JFrame("RestaurantManagement");
-        mainFrame.setSize(sizeX,sizeY);
-        updateWindow(InitialPanel.init());
-        mainFrame.setVisible(true);
+        launch(args);
     }
-    public static void updateWindow(JPanel panel)
+    @Override
+    public void start(Stage primaryStage) throws Exception
     {
-        mainFrame.removeAll();
+        window = primaryStage;
+        primaryStage.setTitle("RestaurantManagement");
 
-        mainFrame.add(panel);
+        switchScene(EScene.LogInPanel);
+        window.setResizable(false);
+        window.setHeight(150);
+        window.setWidth(215);
+        window.show();
+    }
+    public static void switchScene(EScene scene)
+    {
+        switch(scene)
+        {
+            case LogInPanel:
+            {
+                window.setScene(LogInPanel.display());
+            }
+            case MainPanel:
+            {
 
-        mainFrame.validate();
-        mainFrame.repaint();
+            }
+        }
     }
 }
