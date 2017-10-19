@@ -10,4 +10,10 @@ public class Service
 		this.name = name;
 		this.price = price;
 	}
+	
+	public int getTime() 
+	{
+		return 0;
+	}
+	
 }

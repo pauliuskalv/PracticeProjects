@@ -1,4 +1,4 @@
-package receipt;
+package tables;
 
 import java.util.Vector;
 
@@ -6,29 +6,22 @@ import dataManagement.*;
 
 public class Receipt 														// create new receipt for every customer
 {
-	double sum;
-	
 	double waitersFee = 0;													// percentage of what waiter gets of the total (system administrator should be able to change it)
 	String currency = "$";													// currency used when printing receipts (system administrator should be able to change it)
 	
 	Vector<Service> orders = new Vector<Service>();
 	
+	public Receipt(Vector<Service> orders) 
+	{
+		this.orders = orders;
+	}
 	
 	//-------------------------------------
 	// methods
 	
-	public void orderService (Service service)
-	{
-		orders.add(service);
-	}
-	public void orderService (Product service)
-	{
-		orders.add(service);
-	}
-	
-	
 	public String getReceipt(Vector<Service> services) 
 	{
+		double sum = 0;
 		String receipt = "";
 		for(Service service : services)
 		{
