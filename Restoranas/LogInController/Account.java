@@ -1,17 +1,18 @@
 package LogInController;
 
 import LogInController.Password;
+import LogInController.Enums.AccountType;
 
 public class Account {
     String username;
     Password password;
-    String type;
-    Account ( String username , String password , String type ) {
+    AccountType type;
+    Account ( String username , String password , AccountType type ) {
         this.username = username;
         this.password = new Password(password);
         this.type = type;
     }
-    public String getType () {
+    public AccountType getType () {
         return this.type;
     }
     public String getUsername () {
