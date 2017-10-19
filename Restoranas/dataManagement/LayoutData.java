@@ -1,6 +1,6 @@
 package dataManagement;
 
-public class Load 
+public class LayoutData 
 {
 
 }
