@@ -2,7 +2,7 @@ package tables;
 
 import java.util.Vector;
 
-import dataManagement.*;
+import datamanagement.*;
 
 public class Receipt 														// create new receipt for every customer
 {

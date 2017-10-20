@@ -4,15 +4,10 @@ import java.util.Vector;
 
 public class Restaurant 
 {
-	Vector<Table> tables = new Vector<Table>();
+	public static Vector<Table> tables = new Vector<Table>();
+	public static Vector<Customer> customers = new Vector<Customer>();
 	
 	
 	
-	
-	
-	public void update()				// for time tracking
-	{
-		
-	}
 	
 }

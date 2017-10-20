@@ -1,4 +1,4 @@
-package dataManagement;
+package datamanagement;
 
 public class Service
 {
