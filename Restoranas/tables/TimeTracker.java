@@ -10,7 +10,7 @@ import tables.Enums.CustomerStatus;
 public class TimeTracker 
 {
 		
-	public TimeTracker()				// for time tracking
+	public TimeTracker()
 	{
 		final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 		

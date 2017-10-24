@@ -28,8 +28,4 @@ public class Table
 		this.customer = null;
 		this.occupied = false;
 	}
-	// finalize
-	
-	
-	
 }
