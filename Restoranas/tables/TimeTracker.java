@@ -10,7 +10,7 @@ import tables.Enums.CustomerStatus;
 public class TimeTracker 
 {
 		
-	public TimeTracker()
+	public TimeTracker(Restaurant restaurant)
 	{
 		final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 		
@@ -20,15 +20,15 @@ public class TimeTracker
         		{
         			public void run() 
         			{
-        				update();
+        				update(restaurant);
         			}
         		}, 0, 1, TimeUnit.SECONDS
         );
 	}
 	
-	public void update()						// ran every second
+	public void update(Restaurant restaurant)						// ran every second
 	{
-		for(Customer customer : Restaurant.customers)
+		for(Customer customer : restaurant.customers)
 		{
 			if(customer.status == CustomerStatus.WaitingForDelivery)
 			{

@@ -66,6 +66,11 @@ public class Customer
 	public void done()						// waiting to leave
 	{
 		this.status = CustomerStatus.LookingToCheckout;
+		Receipt receipt = new Receipt(this.orders);
+		
+		// write statistics
+		
+		
 	}
 	
 }

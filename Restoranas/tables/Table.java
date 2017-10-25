@@ -9,22 +9,22 @@ public class Table
 	Customer customer;
 	boolean occupied;
 	
-	public Table()
+	public Table(Restaurant restaurant)
 	{
-		Restaurant.tables.add(this);
+		restaurant.tables.add(this);
 	}
 	
 	
-	public void newCustomer(Vector<Service> orders)
+	public void newCustomer(Restaurant restaurant, Vector<Service> orders)
 	{
 		this.customer = new Customer(orders);
-		Restaurant.customers.add(this.customer);
+		restaurant.customers.add(this.customer);
 		this.occupied = true;
 	}
 	
-	public void customerQuit()
+	public void customerQuit(Restaurant restaurant)
 	{
-		Restaurant.customers.remove(this.customer);
+		restaurant.customers.remove(this.customer);
 		this.customer = null;
 		this.occupied = false;
 	}
