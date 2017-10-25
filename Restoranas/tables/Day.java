@@ -11,7 +11,7 @@ public class Day
 	public int servicesSold = 0;
 	
 	public int tablesOccupied = 0;
-	public Vector<Service> sold;
+	public Vector<Vector<Service>> sold = null;			// list of what each customer bought
 	
 	TimeTracker time;
 	

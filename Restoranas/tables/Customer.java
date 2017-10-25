@@ -63,13 +63,21 @@ public class Customer
 		this.late = false;
 	}
 	
-	public void done()						// waiting to leave
+	public void done(Restaurant restaurant)						// waiting to leave
 	{
 		this.status = CustomerStatus.LookingToCheckout;
 		Receipt receipt = new Receipt(this.orders);
 		
 		// write statistics
-		
+		restaurant.currentDay.sold.add(this.orders);
+		for(Service service : orders)
+		{
+			restaurant.currentDay.servicesSold++;
+			if(service.getTime() != 0)					// a way to differentiate product
+			{
+				restaurant.currentDay.productsSold++;
+			}
+		}
 		
 	}
 	

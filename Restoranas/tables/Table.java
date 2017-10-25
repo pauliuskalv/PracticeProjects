@@ -20,6 +20,7 @@ public class Table
 		this.customer = new Customer(orders);
 		restaurant.customers.add(this.customer);
 		this.occupied = true;
+		restaurant.currentDay.tablesOccupied++;
 	}
 	
 	public void customerQuit(Restaurant restaurant)
