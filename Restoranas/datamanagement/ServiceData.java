@@ -38,7 +38,7 @@ public class ServiceData
 		objectStream.close();
 	}
 	
-	public Vector<Service> loadDataList() throws IOException, ClassNotFoundException
+	public void loadDataList() throws IOException, ClassNotFoundException
 	{
 		FileInputStream fileStream = new FileInputStream("data.txt");
 		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
@@ -48,7 +48,7 @@ public class ServiceData
 		
 		objectStream.close();
 		fileStream.close();
-		return list;
+		this.fullList = list;
 	}
 	
 }

@@ -6,19 +6,22 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Vector;
-import tables.Table;
 
-public class LayoutData 
+import tables.Day;
+
+public class StatisticData 
 {
+	public Vector<Day> dailyStats;
 	
-	Vector<Table> tables;
+	// catch exceptions
+	
 	
 	public void save() throws IOException
 	{
 		FileOutputStream fileStream = new FileOutputStream("statistics.txt");
 	    ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
 	    
-		objectStream.writeObject(this.tables);
+		objectStream.writeObject(this.dailyStats);
 		
 		fileStream.close();
 		objectStream.close();
@@ -29,9 +32,12 @@ public class LayoutData
 		FileInputStream fileStream = new FileInputStream("statistics.txt");
 		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
 		
-		this.tables = (Vector<Table>)objectStream.readObject();
+		this.dailyStats = (Vector<Day>)objectStream.readObject();
 		
 		objectStream.close();
 		fileStream.close();
 	}
+	
+	
+	
 }
