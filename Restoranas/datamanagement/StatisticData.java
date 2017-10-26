@@ -1,6 +1,7 @@
 package datamanagement;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -12,19 +13,32 @@ import tables.Day;
 public class StatisticData 
 {
 	public Vector<Day> dailyStats;
-	
-	// catch exceptions
-	
-	
-	public void save() throws IOException
+
+	public void save()
 	{
-		FileOutputStream fileStream = new FileOutputStream("statistics.txt");
-	    ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-	    
-		objectStream.writeObject(this.dailyStats);
+		FileOutputStream fileStream;
+		try 
+		{
+			fileStream = new FileOutputStream("statistics.txt");
+			ObjectOutputStream objectStream;
+			try 
+			{
+				objectStream = new ObjectOutputStream(fileStream);
+				objectStream.writeObject(this.dailyStats);
+				objectStream.close();
+				fileStream.close();
+			}
+			
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			}
+		}
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
 		
-		fileStream.close();
-		objectStream.close();
 	}
 	
 	public void loadStatistics() throws IOException, ClassNotFoundException

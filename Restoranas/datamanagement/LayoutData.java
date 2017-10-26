@@ -15,7 +15,7 @@ public class LayoutData
 	
 	public void save() throws IOException
 	{
-		FileOutputStream fileStream = new FileOutputStream("statistics.txt");
+		FileOutputStream fileStream = new FileOutputStream("layout.txt");
 	    ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
 	    
 		objectStream.writeObject(this.tables);
@@ -26,7 +26,7 @@ public class LayoutData
 	
 	public void loadStatistics() throws IOException, ClassNotFoundException
 	{
-		FileInputStream fileStream = new FileInputStream("statistics.txt");
+		FileInputStream fileStream = new FileInputStream("layout.txt");
 		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
 		
 		this.tables = (Vector<Table>)objectStream.readObject();
