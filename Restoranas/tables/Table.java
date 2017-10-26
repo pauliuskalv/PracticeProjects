@@ -9,6 +9,9 @@ public class Table
 	Customer customer;
 	boolean occupied;
 	
+	int x;					// assuming that user interface will use coordinate system
+	int y;
+	
 	public Table(Restaurant restaurant)
 	{
 		restaurant.tables.add(this);
