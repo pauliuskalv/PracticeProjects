@@ -1,6 +1,7 @@
 package gui;
 
-import javafx.stage.*;
+import gui.enums.EScene;
+
 import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.scene.control.*;
@@ -8,8 +9,8 @@ import javafx.geometry.*;
 
 class LogInPanel
 {
-    static final int preferredWidth = 400;
-    static final int preferredHeight = 400;
+    static final int preferredWidth = 500;
+    static final int preferredHeight = 500;
     private static final String username = "Username:";
     private static final String password = "Password:";
     public static Scene display()
@@ -55,9 +56,9 @@ class LogInPanel
     {
         if ( username.equals("admin") && password.equals("admin") )
         {
-            System.out.println("yay");
+            UIController.switchScene(EScene.MainPanel);
         }
         else
-            WarningBox.display("Bad login data!");
+            WarningBox.display("This user does not exist!",150,150);
     }
 }
