@@ -1,7 +1,5 @@
 #!/bin/bash
 
-rm -r bin
-
 #build the classpath
 CLASSPATH=
 for i in `find * -name "*.java"`
@@ -9,7 +7,9 @@ do
   CLASSPATH=${CLASSPATH}\ ${i}
 done
 
-mkdir bin
+if [ ! -d "bin" ]; then
+	mkdir bin
+fi
 
 javac -d bin ${CLASSPATH}
 
