@@ -4,6 +4,8 @@ import java.util.Vector;
 
 import datamanagement.Service;
 import tables.TimeTracker;
+import datamanagement.StatisticData;
+
 
 public class Day 
 {
@@ -15,16 +17,15 @@ public class Day
 	
 	TimeTracker time;
 	
-	public void start(Restaurant restaurant)
+	public Day(Restaurant restaurant)
 	{
 		this.time = new TimeTracker(restaurant);
 	}
 	
 	
-	public void end()
+	public void end(StatisticData statistics)
 	{
-		// write into file by using a method from data management package
-		// statisticData.writeDay(this);
+		statistics.writeDay(this);
 		this.time = null;
 	}
 	
