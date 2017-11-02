@@ -14,18 +14,20 @@ public class StatisticData
 {
 	public Vector<Day> dayList;
 	
+	// considering weekList, yearList, monthList
+	
 	
 	public void writeDay(Day day)
 	{
 		dayList.add(day);
 	}
 	
-	public void save(Vector <Day> list) throws IOException
+	public void save() throws IOException
 	{
 		FileOutputStream fileStream = new FileOutputStream("stats.txt");
 	    ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
 	    
-		objectStream.writeObject(list);
+		objectStream.writeObject(this.dayList);
 		
 		fileStream.close();
 		objectStream.close();
