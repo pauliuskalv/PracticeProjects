@@ -11,9 +11,11 @@ public class Day
 {
 	public int productsSold = 0;
 	public int servicesSold = 0;
-	
 	public int tablesOccupied = 0;
-	public Vector<Vector<Service>> sold = null;			// list of what each customer bought
+
+	public int[] amountOfEverySold;
+
+	// public Vector<Vector<Service>> sold = null;			// list of what each customer bought
 	
 	TimeTracker time;
 	

@@ -3,6 +3,7 @@ package tables;
 import java.util.Vector;
 
 import datamanagement.Service;
+import datamanagement.ServiceData;
 import tables.Enums.CustomerStatus;
 
 public class Customer 
@@ -21,17 +22,29 @@ public class Customer
 	
 	//---------------------------
 	
-	public Customer(Vector<Service> orders)
+	public Customer(Vector<Service> orders, ServiceData data, Day day)
 	{
-		order(orders);
+		order(orders, data, day);
 	}
 	
 	//----------------------------
 	
-	public void order(Vector<Service> orders)
+	public void order(Vector<Service> orders, ServiceData data, Day day)
 	{
 		this.orders = orders;
 		this.estimate = getTimeToWait(orders);
+		int i = 0;
+		for(Service order : orders)
+		{
+			for(Service fromMenu : data.fullList)
+			{
+				if(order.equals(fromMenu))
+				{
+					i = data.fullList.indexOf(fromMenu);
+					day.amountOfEverySold[i]++; 
+				}
+			}
+		}
 	}
 	
 	public int getTimeToWait(Vector<Service> orders)					// approximate wait time for order

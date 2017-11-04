@@ -9,7 +9,7 @@ import java.util.Vector;
 
 public class ServiceData
 {
-	Vector<Service> fullList = new Vector<Service>();
+	public Vector<Service> fullList = new Vector<Service>();
 	
 	public void create(String name, double price)
 	{
