@@ -9,16 +9,36 @@ import java.util.Vector;
 
 public class ServiceData
 {
-	public Vector<Service> fullList = new Vector<Service>();
+	public Vector<Service> fullList = new Vector<Service>();		// product and service list
+	public Vector<String> attributeList = new Vector<String>();		// list of all used attributes
 	
 	public void create(String name, double price)
 	{
 		Service service = new Service(name, price);
 		fullList.add(service);
 	}
+
 	public void create(String name, double price, Vector<String> attributes, int time)
 	{
 		Product product = new Product(name, price, attributes, time);
+		
+		for(String newAttribute : attributes)
+		{
+			int same = 0;
+			for(String alreadyUsed : attributeList)
+			{
+				// if attribute is not the same, add plus one
+				if(!alreadyUsed.equals(newAttribute))
+				{
+					same++;
+				}
+			}
+			// if attribute isnt the same as every other in the already used attribute list
+			if(same == attributeList.size())
+			{
+				attributeList.add(newAttribute);
+			}
+		}
 		fullList.add(product);
 	}
 	
@@ -27,6 +47,7 @@ public class ServiceData
 		fullList.remove(service);
 	}
 	
+	// TODO: save and load attribute list
 	public void save(Vector <Service> fullList) throws IOException
 	{
 		FileOutputStream fileStream = new FileOutputStream("data.txt");

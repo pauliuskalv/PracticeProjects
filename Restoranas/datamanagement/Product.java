@@ -4,7 +4,7 @@ import java.util.Vector;
 
 public class Product extends Service
 {
-	Vector<String> attributes = new Vector<String>();
+	public Vector<String> attributes = new Vector<String>();
 	int time;											// how much time it takes to prepare the product
 	
 	public Product(String name, double price, Vector<String> attributes, int time) 
@@ -19,5 +19,6 @@ public class Product extends Service
 		return time;
 	}
 	
-	
+
+
 }

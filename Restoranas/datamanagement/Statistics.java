@@ -6,23 +6,32 @@ import tables.Day;
 
 public class Statistics
 {
-	// every method per 7 days
-	// every method per 30 days
-	// every method per 365 days
-	// most profitable product/service list
-	// most ordered product/service list
-	// most common 2 product combinations list
-	// average profits
-	// most common product attribute list
-	// average profit per customer
+	// every method per 7 days				+
+	// every method per 30 days				+
+	// every method per 365 days			+
+	// most profitable product/service list	+
+	// most ordered product/service list	+
+	// most common 2 product combinations list	-???
+	// average profits per day				+
+	// most common product attribute list	-
+	// most profitable product attribute list-
+	// average profit per customer			-???
 	
+
+
+	//--------------------------------------
+
+	public int getNumberOfCustomers(Vector<Day> days)
+	{
+		int number = 0;
+		for(Day day : days)
+		{
+			number += day.tablesOccupied;
+		}
+		return number;
+	}
 	
 	//---------------------------------------
-	
-	public int getProductsSold(Day day)
-	{
-		return day.productsSold;
-	}
 	
 	public int getProductsSold(Vector<Day> days)
 	{
@@ -32,23 +41,6 @@ public class Statistics
 			sold += day.productsSold;
 		}
 		return sold;
-	}
-
-	public int getProductsSoldWeek(Vector<Day> days)
-	{
-		int sold = 0;
-		for(int i = 0; i < 7; i++)
-		{
-			sold += days.get(days.size() - i).productsSold;
-		}
-		return sold;
-	}
-	
-	//---------------------------------------
-	
-	public int getServicesSold(Day day)
-	{
-		return day.servicesSold;
 	}
 	
 	public int getServicesSold(Vector<Day> days)
@@ -93,36 +85,120 @@ public class Statistics
 	
 	public Vector<Service> getMostProfitableServices(Vector<Day> days, ServiceData serviceData)
 	{
-		double[] sum;
+		double[] sum = new double[serviceData.fullList.size()];
 		for(Day day : days)
 		{
 			for(int i = 0; i < serviceData.fullList.size(); i++)
 			{
-				sum[i] = serviceData.fullList.elementAt(i).price * day.amountOfEverySold[i];
+				sum[i] += serviceData.fullList.elementAt(i).price * day.amountOfEverySold[i];
 			}
 		}
 		return sort(serviceData.fullList, sum);
 	}
-	
 
 	//--------------------------------------
 
-	public int getNumberOfCustomers(Vector<Day> days)
+	public Vector<Service> getMostOrderedServices(Vector<Day> days, ServiceData serviceData)
 	{
-		int number = 0;
-		for(Day day : days)
+		int[] amount = getAmountOfEverySold(days, serviceData);
+		
+		return sort(serviceData.fullList, amount);
+	}
+
+	//--------------------------------------
+
+	public double getProfits(Vector<Day> days, ServiceData serviceData)
+	{
+		double sum = 0;
+		int[] amount = getAmountOfEverySold(days, serviceData);
+
+		int i = 0;
+		
+		for(Service service : serviceData.fullList)
 		{
-			number += day.tablesOccupied;
+			sum += service.price * amount[i];
 		}
-		return number;
+
+		return sum;
 	}
 
 
-	// utilities
-
-	public Vector sort(Vector vector, double[] value)
+	public double getAverageProfits(Vector<Day> days, ServiceData serviceData)
 	{
-		Vector sorted = new Vector();
+
+		double sum = 0;
+		int[] amount = getAmountOfEverySold(days, serviceData);
+
+		int i = 0;
+		
+		for(Service service : serviceData.fullList)
+		{
+			sum += service.price * amount[i];
+			i++;
+		}
+
+		return sum/days.size();
+	}
+
+	//-------------------------------------
+/*
+	public Vector<String> getMostCommonAttrubutes(Vector<Day> days, ServiceData serviceData)
+	{
+		int[] amount = getAmountOfEverySold(days, serviceData);
+		
+		for(Service service : serviceData.fullList)
+		{
+			//service.attributeList
+			
+		}
+		
+		
+	}
+*/
+	//--------------------------------------
+	// utilities
+	//--------------------------------------
+
+	// calculates how many units of every service has been sold
+	public int[] getAmountOfEverySold(Vector<Day> days, ServiceData serviceData)
+	{
+		int[] amount = new int[serviceData.fullList.size()];
+
+		for(Day day : days)
+		{
+			for(int i = 0; i < serviceData.fullList.size(); i++)
+			{
+				amount[i] += day.amountOfEverySold[i];
+			}
+		}
+
+		return amount;
+	}
+
+	// sort descending based on given value array
+	public Vector<Service> sort(Vector<Service> vector, double[] value)
+	{
+		Vector<Service> sorted = new Vector<Service>();
+		while(sorted.size() < vector.size())
+		{
+			double max = 0;
+			int maxIndex = 0;
+			for(int i = 0; i < vector.size(); i++)
+			{
+				if(value[i] > max)
+				{
+					max = value[i];
+					maxIndex = i;
+				}	
+			}
+			sorted.add(vector.elementAt(maxIndex));
+		}
+		return sorted;
+	}
+
+	public Vector<Service> sort(Vector<Service> vector, int[] value)
+	{
+		Vector<Service> sorted = new Vector<Service>();
 		while(sorted.size() < vector.size())
 		{
 			double max = 0;
