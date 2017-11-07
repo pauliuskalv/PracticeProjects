@@ -136,15 +136,12 @@ public class Statistics
 	{
 		int[] amount = getAmountOfEverySold(days, serviceData);
 		int[] attributeAmount = new int[serviceData.attributeList.size()];
-		int i = 0;
 		
 		for(Service service : serviceData.fullList)
 		{
-			i = 0;
 			for(String attribute : service.attributes)
 			{
-				attributeAmount[i] = attributeAmount[i] + (1 * amount[serviceData.fullList.indexOf(service)]);
-				i++;
+				attributeAmount[serviceData.attributeList.indexOf(attribute)] += amount[serviceData.fullList.indexOf(service)];
 			}
 		}
 
@@ -193,15 +190,12 @@ public class Statistics
 	{
 		int[] amount = getAmountOfEverySold(days, serviceData);
 		int[] attributeAmount = new int[serviceData.attributeList.size()];
-		int i = 0;
 		
 		for(Service service : serviceData.fullList)
 		{
-			i = 0;
 			for(String attribute : service.attributes)
 			{
-				attributeAmount[i] = attributeAmount[i] + (1 * amount[serviceData.fullList.indexOf(service)]);
-				i++;
+				attributeAmount[serviceData.attributeList.indexOf(attribute)] += amount[serviceData.fullList.indexOf(service)];
 			}
 		}
 		return attributeAmount;
