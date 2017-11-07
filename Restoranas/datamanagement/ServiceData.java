@@ -46,22 +46,29 @@ public class ServiceData
 	{
 		fullList.remove(service);
 	}
-	
-	// TODO: save and load attribute list
-	public void save(Vector <Service> fullList) throws IOException
+
+	public void save(Vector <Service> fullList, Vector<String> attributeList) throws IOException
 	{
-		FileOutputStream fileStream = new FileOutputStream("data.txt");
+		FileOutputStream fileStream = new FileOutputStream("services.txt");
 	    ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
 	    
 		objectStream.writeObject(fullList);
 		
 		fileStream.close();
 		objectStream.close();
+
+		fileStream = new FileOutputStream("attributes.txt");
+	    objectStream = new ObjectOutputStream(fileStream);
+	    
+		objectStream.writeObject(attributeList);
+		
+		fileStream.close();
+		objectStream.close();
 	}
 	
-	public Vector<Service> loadDataList() throws IOException, ClassNotFoundException
+	public Vector<Service> loadServiceList() throws IOException, ClassNotFoundException
 	{
-		FileInputStream fileStream = new FileInputStream("data.txt");
+		FileInputStream fileStream = new FileInputStream("services.txt");
 		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
 		Vector<Service> list = new Vector<Service>();
 		
@@ -72,4 +79,17 @@ public class ServiceData
 		return list;
 	}
 	
+
+	public Vector<String> loadAttributeList() throws IOException, ClassNotFoundException
+	{
+		FileInputStream fileStream = new FileInputStream("attributes.txt");
+		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
+		Vector<String> list = new Vector<String>();
+		
+		list = (Vector<String>)objectStream.readObject();
+		
+		objectStream.close();
+		fileStream.close();
+		return list;
+	}
 }

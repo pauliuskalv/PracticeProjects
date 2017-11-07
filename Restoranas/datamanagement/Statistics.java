@@ -6,19 +6,9 @@ import tables.Day;
 
 public class Statistics
 {
-	// every method per 7 days				+
-	// every method per 30 days				+
-	// every method per 365 days			+
-	// most profitable product/service list	+
-	// most ordered product/service list	+
-	// most common 2 product combinations list	-???
-	// average profits per day				+
-	// most common product attribute list	-
-	// most profitable product attribute list-
-	// average profit per customer			-???
+
+	// TODO: figure out how to return list and value together in sort methods
 	
-
-
 	//--------------------------------------
 
 	public int getNumberOfCustomers(Vector<Day> days)
@@ -141,20 +131,44 @@ public class Statistics
 	}
 
 	//-------------------------------------
-/*
+
 	public Vector<String> getMostCommonAttrubutes(Vector<Day> days, ServiceData serviceData)
 	{
 		int[] amount = getAmountOfEverySold(days, serviceData);
+		int[] attributeAmount = new int[serviceData.attributeList.size()];
+		int i = 0;
 		
 		for(Service service : serviceData.fullList)
 		{
-			//service.attributeList
-			
+			i = 0;
+			for(String attribute : service.attributes)
+			{
+				attributeAmount[i] = attributeAmount[i] + (1 * amount[serviceData.fullList.indexOf(service)]);
+				i++;
+			}
 		}
-		
-		
+
+		return sortAttributes(serviceData.attributeList, attributeAmount);
 	}
-*/
+
+	public Vector<String> getMostProfitableAttributeList(Vector<Day> days, ServiceData serviceData)
+	{
+		int[] attributeProfit = new int[serviceData.attributeList.size()];
+
+		for(String attribute : serviceData.attributeList)
+		{
+			for(Service service : serviceData.fullList)
+			{
+				if(service.attributes.contains(attribute))
+				{
+					attributeProfit[serviceData.attributeList.indexOf(attribute)] += service.price;
+				}
+			}
+		}
+
+		return sortAttributes(serviceData.attributeList, attributeProfit);
+	}
+
 	//--------------------------------------
 	// utilities
 	//--------------------------------------
@@ -175,10 +189,48 @@ public class Statistics
 		return amount;
 	}
 
+	public int[] getAmountOfAttributeInstances(Vector<Day> days, ServiceData serviceData)
+	{
+		int[] amount = getAmountOfEverySold(days, serviceData);
+		int[] attributeAmount = new int[serviceData.attributeList.size()];
+		int i = 0;
+		
+		for(Service service : serviceData.fullList)
+		{
+			i = 0;
+			for(String attribute : service.attributes)
+			{
+				attributeAmount[i] = attributeAmount[i] + (1 * amount[serviceData.fullList.indexOf(service)]);
+				i++;
+			}
+		}
+		return attributeAmount;
+	}
+
 	// sort descending based on given value array
 	public Vector<Service> sort(Vector<Service> vector, double[] value)
 	{
 		Vector<Service> sorted = new Vector<Service>();
+		while(sorted.size() < vector.size())
+		{
+			double max = 0;
+			int maxIndex = 0;
+			for(int i = 0; i < vector.size(); i++)
+			{
+				if(value[i] > max)
+				{
+					max = value[i];
+					maxIndex = i;
+				}	
+			}
+			sorted.add(vector.elementAt(maxIndex));
+		}
+		return sorted;
+	}
+
+	public Vector<String> sortAttributes(Vector<String> vector, int[] value)
+	{
+		Vector<String> sorted = new Vector<String>();
 		while(sorted.size() < vector.size())
 		{
 			double max = 0;
