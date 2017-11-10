@@ -56,7 +56,7 @@ class LogInPanel
     {
         if ( username.equals("admin") && password.equals("admin") )
         {
-            UIController.switchScene(EScene.MainPanel);
+            UIController.switchScene(EScene.MainPanelAdmin);
         }
         else
             WarningBox.display("This user does not exist!",150,150);

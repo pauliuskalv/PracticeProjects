@@ -5,14 +5,10 @@ import gui.enums.EScene;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
@@ -23,7 +19,7 @@ public class MainPanel
     private static final String startSessionText = "Start a new session";
     private static final String settingsText = "User settings";
     private static final String text = "Informational text goes here";
-    private static final Insets defaultInsets = new Insets(0,5,0,5);
+    private static final Insets defaultInsets = new Insets(0,10,0,10);
     public static Scene display()
     {
         Scene scene;
@@ -37,9 +33,9 @@ public class MainPanel
         topButtonLayout.setPadding(defaultInsets);
         topButtonLayout.setAlignment(Pos.CENTER_LEFT);
 
-        VBox logOutButtonLayout = new VBox();
+        VBox logOutButtonLayout = new VBox(10);
         logOutButtonLayout.setPadding(defaultInsets);
-        logOutButtonLayout.setAlignment(Pos.BOTTOM_RIGHT);
+        logOutButtonLayout.setAlignment(Pos.CENTER_RIGHT);
 
         Button layoutDesigner = new Button(layoutDesignerText);
         layoutDesigner.setOnAction(e -> UIController.switchScene(EScene.LayoutDesigner));

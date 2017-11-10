@@ -20,7 +20,7 @@ public class UIController extends Application
         window = primaryStage;
         primaryStage.setTitle("RestaurantManagement");
 
-        switchScene(EScene.MainPanel);
+        switchScene(EScene.MainPanelAdmin);
         window.setResizable(false);
         window.setHeight(350);
         window.setWidth(400);
@@ -57,12 +57,22 @@ public class UIController extends Application
                 window.setScene(RegisterPanel.display());
                 break;
             }
-            case MainPanel:
+            case MainPanelUser:
             {
                 window.setTitle("RestaurantManagement");
                 window.setScene(gui.user.MainPanel.display());
                 break;
             }
+            case MainPanelAdmin:
+            {
+                window.setTitle("RestaurantManagement");
+                window.setScene(gui.admin.MainPanel.display());
+                break;
+            }
         }
+    }
+    public static void setAccount(Account account)
+    {
+        userAccount = account;
     }
 }
