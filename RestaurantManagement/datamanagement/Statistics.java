@@ -71,7 +71,7 @@ public class Statistics
 	
 	//---------------------------------------
 	
-	public Vector<Service> getMostProfitableServices(Vector<Day> days, ServiceData serviceData)
+	public Vector<DataNode> getMostProfitableServices(Vector<Day> days, ServiceData serviceData)
 	{
 		double[] sum = new double[serviceData.fullList.size()];
 		for(Day day : days)
