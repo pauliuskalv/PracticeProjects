@@ -4,9 +4,9 @@ import logincontroller.Password;
 import logincontroller.enums.AccountType;
 
 public class Account {
-    String username;
-    Password password;
-    AccountType type;
+    public String username;
+    private Password password;
+    public AccountType type;
     Account ( String username , String password , AccountType type ) {
         this.username = username;
         this.password = new Password(password);
@@ -17,5 +17,9 @@ public class Account {
     }
     public String getUsername () {
         return this.username;
+    }
+    public boolean passwordIsCorrect(String password)
+    {
+        return this.password.isCorrect(password);
     }
 }

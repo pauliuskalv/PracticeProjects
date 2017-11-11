@@ -1,5 +1,6 @@
 package gui;
 
+import gui.admin.UserManagement;
 import gui.enums.EScene;
 
 import javafx.application.Application;
@@ -20,7 +21,7 @@ public class UIController extends Application
         window = primaryStage;
         primaryStage.setTitle("RestaurantManagement");
 
-        switchScene(EScene.MainPanelAdmin);
+        switchScene(EScene.UserManagement);
         window.setResizable(false);
         window.setHeight(350);
         window.setWidth(400);
@@ -67,6 +68,15 @@ public class UIController extends Application
             {
                 window.setTitle("RestaurantManagement");
                 window.setScene(gui.admin.MainPanel.display());
+                break;
+            }
+            case UserManagement:
+            {
+                window.setTitle("UserManagement");
+                String[] toDisplay = { "test" , "test2" ,"test3","test4","test5","test6","test7",
+                                        "test8","test9","test10","test11","test12","test13",
+                                        "test14","test15","test16" };
+                window.setScene(UserManagement.display(toDisplay));
                 break;
             }
         }

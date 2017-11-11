@@ -11,7 +11,7 @@ if [ ! -d "bin" ]; then
 	mkdir bin
 fi
 
-javac -d bin ${CLASSPATH}
+javac -d bin ${CLASSPATH} 
 
 cd bin
 

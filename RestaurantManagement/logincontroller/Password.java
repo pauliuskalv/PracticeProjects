@@ -10,7 +10,7 @@ public class Password implements Serializable {
         salt = Hasher.getNextSalt();
         saltedPassword = Hasher.hash( password.toCharArray() , salt);
     }
-    public boolean isCorrect ( String password ) {
+    boolean isCorrect ( String password ) {
         byte[] hashedPassword = Hasher.hash( password.toCharArray() , salt );
 
         if ( saltedPassword.length != hashedPassword.length ) return false;

@@ -14,7 +14,7 @@ class RegisterPanel
 {
     private static final String usernameLabelText = "Username:";
     private static final String passwordLabelText = "Password:";
-    private static final String passwordLabelTextConfirm = "Confirm:";
+    private static final String passwordLabelTextConfirm = "Repeat password:";
     public static Scene display()
     {
         Scene toReturn;

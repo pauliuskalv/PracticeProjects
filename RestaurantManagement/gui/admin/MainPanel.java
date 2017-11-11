@@ -12,9 +12,11 @@ import javafx.scene.control.Label;
 
 public class MainPanel
 {
+    private static final String layoutDesignerString = "Layout Designer";
+    private static final String productManagementString = "Product settings";
     private static final String userManagementString = "User Management";
     private static final String statisticsPanelString = "Statistics Panel";
-    //private static final String 
+    private static final String settingsString = "Settings";
     public static Scene display()
     {
         BorderPane layout = new BorderPane();
@@ -35,7 +37,7 @@ public class MainPanel
         enterUserManagement.setOnAction(e -> UIController.switchScene(EScene.UserManagement));
 
         Button enterStatisticsPanel = new Button(statisticsPanelString);
-        enterStatisticsPanel.setOnAction(e -> UIController.switchScene(EScene.StatisticsPanel));
+        enterStatisticsPanel.setOnAction(e -> UIController.switchScene(EScene.StatisticsPanelAll));
 
         leftLayout.getChildren().addAll(enterUserManagement,enterStatisticsPanel);
 
