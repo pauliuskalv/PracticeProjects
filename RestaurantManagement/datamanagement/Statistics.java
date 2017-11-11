@@ -7,8 +7,6 @@ import tables.Day;
 public class Statistics
 {
 
-	// TODO: figure out how to return list and value together in sort methods
-	
 	//--------------------------------------
 
 	public int getNumberOfCustomers(Vector<Day> days)
@@ -88,7 +86,7 @@ public class Statistics
 
 	//--------------------------------------
 
-	public Vector<Service> getMostOrderedServices(Vector<Day> days, ServiceData serviceData)
+	public Vector<DataNode> getMostOrderedServices(Vector<Day> days, ServiceData serviceData)
 	{
 		int[] amount = getAmountOfEverySold(days, serviceData);
 		
@@ -132,7 +130,7 @@ public class Statistics
 
 	//-------------------------------------
 
-	public Vector<String> getMostCommonAttrubutes(Vector<Day> days, ServiceData serviceData)
+	public Vector<DataNode> getMostCommonAttrubutes(Vector<Day> days, ServiceData serviceData)
 	{
 		int[] amount = getAmountOfEverySold(days, serviceData);
 		int[] attributeAmount = new int[serviceData.attributeList.size()];
@@ -148,7 +146,7 @@ public class Statistics
 		return sortAttributes(serviceData.attributeList, attributeAmount);
 	}
 
-	public Vector<String> getMostProfitableAttributeList(Vector<Day> days, ServiceData serviceData)
+	public Vector<DataNode> getMostProfitableAttributeList(Vector<Day> days, ServiceData serviceData)
 	{
 		int[] attributeProfit = new int[serviceData.attributeList.size()];
 
@@ -202,9 +200,9 @@ public class Statistics
 	}
 
 	// sort descending based on given value array
-	public Vector<Service> sort(Vector<Service> vector, double[] value)
+	public Vector<DataNode> sort(Vector<Service> vector, double[] value)
 	{
-		Vector<Service> sorted = new Vector<Service>();
+		Vector<DataNode> sorted = new Vector<DataNode>();
 		while(sorted.size() < vector.size())
 		{
 			double max = 0;
@@ -217,14 +215,14 @@ public class Statistics
 					maxIndex = i;
 				}	
 			}
-			sorted.add(vector.elementAt(maxIndex));
+			sorted.add(new DataNode(vector.elementAt(maxIndex).name, value[maxIndex]);
 		}
 		return sorted;
 	}
 
-	public Vector<String> sortAttributes(Vector<String> vector, int[] value)
+	public Vector<DataNode> sortAttributes(Vector<String> vector, int[] value)
 	{
-		Vector<String> sorted = new Vector<String>();
+		Vector<DataNode> sorted = new Vector<DataNode>();
 		while(sorted.size() < vector.size())
 		{
 			double max = 0;
@@ -237,14 +235,14 @@ public class Statistics
 					maxIndex = i;
 				}	
 			}
-			sorted.add(vector.elementAt(maxIndex));
+			sorted.add(new DataNode(vector.elementAt(maxIndex), value[maxIndex]));
 		}
 		return sorted;
 	}
 
-	public Vector<Service> sort(Vector<Service> vector, int[] value)
+	public Vector<DataNode> sort(Vector<Service> vector, int[] value)
 	{
-		Vector<Service> sorted = new Vector<Service>();
+		Vector<DataNode> sorted = new Vector<DataNode>();
 		while(sorted.size() < vector.size())
 		{
 			double max = 0;
@@ -257,7 +255,7 @@ public class Statistics
 					maxIndex = i;
 				}	
 			}
-			sorted.add(vector.elementAt(maxIndex));
+			sorted.add(new DataNode(vector.elementAt(maxIndex).name, value[maxIndex]));
 		}
 		return sorted;
 	}
