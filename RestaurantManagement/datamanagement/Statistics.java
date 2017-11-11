@@ -208,7 +208,7 @@ public class Statistics
 		while(sorted.size() < vector.size())
 		{
 			double max = 0;
-			int maxIndex = 0;
+			int maxIndex = 0;3
 			for(int i = 0; i < vector.size(); i++)
 			{
 				if(value[i] > max)
