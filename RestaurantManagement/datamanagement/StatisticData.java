@@ -38,7 +38,6 @@ public class StatisticData
 		FileInputStream fileStream = new FileInputStream("stats.txt");
 		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
 		
-		@SuppressWarnings("unchecked")
 		this.dayList = (Vector<Day>)objectStream.readObject();
 		
 		objectStream.close();

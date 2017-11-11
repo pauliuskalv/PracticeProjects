@@ -3,6 +3,7 @@ package tables;
 import java.util.Vector;
 
 import datamanagement.Service;
+import datamanagement.ServiceData;
 
 public class Table 
 {
@@ -18,9 +19,9 @@ public class Table
 	}
 	
 	
-	public void newCustomer(Restaurant restaurant, Vector<Service> orders)
+	public void newCustomer(Restaurant restaurant, Vector<Service> orders, ServiceData serviceData, Day day)
 	{
-		this.customer = new Customer(orders);
+		this.customer = new Customer(orders, serviceData, day);
 		restaurant.customers.add(this.customer);
 		this.occupied = true;
 		restaurant.currentDay.tablesOccupied++;

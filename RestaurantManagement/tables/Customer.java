@@ -82,7 +82,6 @@ public class Customer
 		Receipt receipt = new Receipt(this.orders);
 		
 		// write statistics
-		restaurant.currentDay.sold.add(this.orders);
 		for(Service service : orders)
 		{
 			restaurant.currentDay.servicesSold++;

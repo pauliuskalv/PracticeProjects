@@ -7,8 +7,12 @@ public class Restaurant
 	public Vector<Table> tables = new Vector<Table>();
 	public Vector<Customer> customers = new Vector<Customer>();
 	
-	public Day currentDay = new Day();
+	public Day currentDay;
+
+	public Restaurant()
+	{
+		this.currentDay = new Day(this);
+	}
 	
-	// move everything into constructor later on
 	
 }

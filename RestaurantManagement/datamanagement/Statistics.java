@@ -206,7 +206,7 @@ public class Statistics
 		while(sorted.size() < vector.size())
 		{
 			double max = 0;
-			int maxIndex = 0;3
+			int maxIndex = 0;
 			for(int i = 0; i < vector.size(); i++)
 			{
 				if(value[i] > max)
@@ -215,7 +215,7 @@ public class Statistics
 					maxIndex = i;
 				}	
 			}
-			sorted.add(new DataNode(vector.elementAt(maxIndex).name, value[maxIndex]);
+			sorted.add(new DataNode(vector.elementAt(maxIndex).name, value[maxIndex]));
 		}
 		return sorted;
 	}

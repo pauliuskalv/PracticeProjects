@@ -42,7 +42,6 @@ public class LayoutData
 		FileInputStream fileStream = new FileInputStream("tables.txt");
 		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
 		
-		@SuppressWarnings("unchecked")
 		this.tableList = (Vector<Table>)objectStream.readObject();
 		
 		objectStream.close();

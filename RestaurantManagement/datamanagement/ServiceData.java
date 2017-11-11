@@ -70,8 +70,7 @@ public class ServiceData
 	{
 		FileInputStream fileStream = new FileInputStream("services.txt");
 		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-		
-		@SuppressWarnings("unchecked")
+	
 		Vector<Service> list = (Vector<Service>)objectStream.readObject();
 		
 		objectStream.close();
