@@ -2,6 +2,9 @@ package datamanagement;
 
 public class Utiliites
 {
+    // there is a problem if filename is changed
+    // also file names may be encrypted
+    // especially data itself
 
     String fileExtension = ".txt";          // can be changed into an enumeration later if need arises
 

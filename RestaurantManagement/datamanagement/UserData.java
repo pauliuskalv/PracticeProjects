@@ -8,8 +8,8 @@ import java.io.ObjectOutputStream;
 
 public class UserData
 {
-    public int maxUsers = 100;
-	public String[] users;a
+    public int maxUsers = 100;			// should be made an option
+	public String[] users;
 	
 	String userDataName = "UserData";
 
@@ -17,7 +17,6 @@ public class UserData
     {
         this.users  = new String[maxUsers];
     }
-
 
     public void save()
 	{
