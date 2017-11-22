@@ -13,17 +13,17 @@ public class Day
 	public int servicesSold = 0;
 	public int tablesOccupied = 0;
 
-	public int[] amountOfEverySold;
-
-	// public Vector<Vector<Service>> sold = null;			// list of what each customer bought
+	public int[] amountOfEverySold;			// this may need to be initialised
 	
 	TimeTracker time;
+	int timeElapsed;
 	
 	public Day(Restaurant restaurant)
 	{
 		this.time = new TimeTracker(restaurant);
+		this.timeElapsed = 0;					// initialisation
+		amountOfEverySold = new int[];
 	}
-	
 	
 	public void end(StatisticData statistics)
 	{

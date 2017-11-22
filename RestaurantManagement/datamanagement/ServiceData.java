@@ -12,8 +12,8 @@ public class ServiceData
 	public Vector<Service> fullList = new Vector<Service>();		// product and service list
 	public Vector<String> attributeList = new Vector<String>();		// list of all used attributes
 
-	String ServiceDataName = "ServiceList";
-	String AttributeDataName = "AttributeData";
+	String serviceDataName = "ServiceList";
+	String attributeDataName = "AttributeData";
 	
 	public void create(String name, double price)
 	{
@@ -21,7 +21,7 @@ public class ServiceData
 		fullList.add(service);
 	}
 
-	public void create(String name, double price, Vector<String> attributes, int time)
+	public void create(String name, double price, Vector<String> attributes, int time)	// could be optimised to use this
 	{
 		Product product = new Product(name, price, attributes, time);
 		
@@ -60,22 +60,13 @@ public class ServiceData
 		Utilities.saveObject(this.attributeList, this.attributeDataName);
 	}
 	
-	public Vector<Service> loadServiceList() throws IOException, ClassNotFoundException
+	public void loadServiceList()
 	{
-		Utilites.loadObject(filename);
+		this.fullList = Utilites.loadObject(ServiceDataName);
 	}
-	
 
-	public Vector<String> loadAttributeList() throws IOException, ClassNotFoundException
+	public void loadAttributeList()
 	{
-		FileInputStream fileStream = new FileInputStream("attributes.txt");
-		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-
-		@SuppressWarnings("unchecked")
-		Vector<String> list = (Vector<String>)objectStream.readObject();
-		
-		objectStream.close();
-		fileStream.close();
-		return list;
+		this attributeList = Utilities.loadObject(attributeDataName);
 	}
 }

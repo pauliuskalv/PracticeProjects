@@ -15,7 +15,7 @@ public class Customer
 	
 	int estimate;			// estimated time to deliver a product
 	
-	CustomerStatus status = CustomerStatus.WaitingForDelivery;
+	CustomerStatus status;
 	boolean late = false;
 
 	Vector<Service> orders;
@@ -24,6 +24,7 @@ public class Customer
 	
 	public Customer(Vector<Service> orders, ServiceData data, Day day)
 	{
+		this.status = CustomerStatus.WaitingForDelivery;
 		order(orders, data, day);
 	}
 	

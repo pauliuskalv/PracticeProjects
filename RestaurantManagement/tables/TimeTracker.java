@@ -8,8 +8,7 @@ import java.util.concurrent.TimeUnit;
 import tables.Enums.CustomerStatus;
 
 public class TimeTracker 
-{
-		
+{	
 	public TimeTracker(Restaurant restaurant)
 	{
 		final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();

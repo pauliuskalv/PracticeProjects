@@ -13,11 +13,12 @@ public class Table
 	int x;					// assuming that user interface will use coordinate system
 	int y;
 	
-	public Table(Restaurant restaurant)
+	public Table(Restaurant restaurant, int x, int y)
 	{
 		restaurant.tables.add(this);
+		this.x = x;
+		this.y = y;
 	}
-	
 	
 	public void newCustomer(Restaurant restaurant, Vector<Service> orders, ServiceData serviceData, Day day)
 	{
