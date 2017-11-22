@@ -28,7 +28,13 @@ public class Restaurant
 
 	public void saveAllData()
 	{
-		// TODO
+		ServiceData.saveServiceList()
+		ServiceData.saveAttributeList();
+
+		LayoutData.saveTableList();
+		LayoutData.saveWallList();
+
+		UserData.saveUserList
 	}
 
 	public void loadAllData()

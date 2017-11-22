@@ -9,7 +9,9 @@ import java.io.ObjectOutputStream;
 public class UserData
 {
     public int maxUsers = 100;
-    public String[] users;
+	public String[] users;a
+	
+	String userDataName = "UserData";
 
     public UserData()
     {
@@ -17,28 +19,14 @@ public class UserData
     }
 
 
-    public void save(String[] users) throws IOException
+    public void save()
 	{
-		
-		FileOutputStream fileStream = new FileOutputStream("users.txt");
-	    ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-	    
-		objectStream.writeObject(users);
-		
-		fileStream.close();
-		objectStream.close();
-	
+		Utilities.saveObject(this.users, userDataName);
 	}
 	
-	public void load() throws IOException, ClassNotFoundException
+	public void load()
 	{
-		FileInputStream fileStream = new FileInputStream("users.txt");
-		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-
-		this.users = (String[])objectStream.readObject();
-		
-		objectStream.close();
-		fileStream.close();
+		this.users = Utilities.loadObject(userDataName);
     }
     
 }
