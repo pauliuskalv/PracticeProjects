@@ -11,6 +11,9 @@ public class ServiceData
 {
 	public Vector<Service> fullList = new Vector<Service>();		// product and service list
 	public Vector<String> attributeList = new Vector<String>();		// list of all used attributes
+
+	String ServiceDataName = "ServiceList";
+	String AttributeDataName = "AttributeData";
 	
 	public void create(String name, double price)
 	{
@@ -47,35 +50,19 @@ public class ServiceData
 		fullList.remove(service);
 	}
 
-	public void save(Vector <Service> fullList, Vector<String> attributeList) throws IOException
+	public void saveServiceList()
 	{
-		FileOutputStream fileStream = new FileOutputStream("services.txt");
-	    ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-	    
-		objectStream.writeObject(fullList);
-		
-		fileStream.close();
-		objectStream.close();
+		Utilites.saveObject(this.fullList, this.ServiceDataName);
+	}
 
-		fileStream = new FileOutputStream("attributes.txt");
-	    objectStream = new ObjectOutputStream(fileStream);
-	    
-		objectStream.writeObject(attributeList);
-		
-		fileStream.close();
-		objectStream.close();
+	public void saveAttributes()
+	{
+		Utilities.saveObject(this.attributeList, this.attributeDataName);
 	}
 	
 	public Vector<Service> loadServiceList() throws IOException, ClassNotFoundException
 	{
-		FileInputStream fileStream = new FileInputStream("services.txt");
-		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-	
-		Vector<Service> list = (Vector<Service>)objectStream.readObject();
-		
-		objectStream.close();
-		fileStream.close();
-		return list;
+		Utilites.loadObject(filename);
 	}
 	
 

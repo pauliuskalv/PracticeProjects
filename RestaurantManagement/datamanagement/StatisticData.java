@@ -1,6 +1,6 @@
 package datamanagement;
-
 import java.io.FileInputStream;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -9,39 +9,25 @@ import java.util.Vector;
 
 import tables.Day;
 
-
-public class StatisticData 
+public class StatisticData
 {
+	String filename = "dayData";
+
 	public Vector<Day> dayList;
-	
-	// considering weekList, yearList, monthList
-	
 	
 	public void writeDay(Day day)
 	{
 		dayList.add(day);
 	}
 	
-	public void save() throws IOException
+	public void save()
 	{
-		FileOutputStream fileStream = new FileOutputStream("stats.txt");
-	    ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-	    
-		objectStream.writeObject(this.dayList);
-		
-		fileStream.close();
-		objectStream.close();
+		Utilities.saveObject(dayList, filename);
 	}
 	
 	public void load() throws IOException, ClassNotFoundException
 	{
-		FileInputStream fileStream = new FileInputStream("stats.txt");
-		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-		
-		this.dayList = (Vector<Day>)objectStream.readObject();
-		
-		objectStream.close();
-		fileStream.close();
+		this.dayList = Utilites.loadObject(filename);
 	}
 	
 	

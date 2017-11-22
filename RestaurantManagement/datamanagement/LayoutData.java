@@ -9,52 +9,31 @@ import java.util.Vector;
 
 import tables.Table;
 
-public class LayoutData 
+public class LayoutData
 {
 	Vector<Table> tableList;
 	Vector<Wall> wallList;
+
+	String tableDataName = "TableData";		// filenames
+	String wallDataName = "WallData";
 	
-	public void save(Vector<Table> tables, Vector<Wall> walls) throws IOException
+	public void saveTables()
 	{
-		// tables
-		
-		FileOutputStream fileStream = new FileOutputStream("tables.txt");
-	    ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
-	    
-		objectStream.writeObject(tables);
-		
-		fileStream.close();
-		objectStream.close();
-		
-		// walls
-		
-		fileStream = new FileOutputStream("walls.txt");
-	    objectStream = new ObjectOutputStream(fileStream);
-	    
-		objectStream.writeObject(walls);
-		
-		fileStream.close();
-		objectStream.close();
+		Utilities.saveObject(this.tableList, TableDataName);
+	}
+
+	public void saveWalls()
+	{
+		Utilities.saveObject(this.wallList, WallDataName);
 	}
 	
-	public void load() throws IOException, ClassNotFoundException
+	public void loadTableList()
 	{
-		FileInputStream fileStream = new FileInputStream("tables.txt");
-		ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-		
-		this.tableList = (Vector<Table>)objectStream.readObject();
-		
-		objectStream.close();
-		fileStream.close();
-		
-		fileStream = new FileInputStream("tables.txt");
-		objectStream = new ObjectInputStream(fileStream);
-		
-		
-		this.wallList = (Vector<Wall>)objectStream.readObject();
-		
-		objectStream.close();
-		fileStream.close();
+		this.tableList = Utilities.loadObject(this.tableList, tableDataName);
 	}
 	
+	public void loadWallList()
+	{
+		this.tableList = Utilities.loadObject(this.wallList, wallDataName);
+	}
 }
