@@ -34,12 +34,22 @@ public class Restaurant
 		LayoutData.saveTableList();
 		LayoutData.saveWallList();
 
-		UserData.saveUserList
+		UserData.saveUserList;
+
+		StatisticData.save();
 	}
 
 	public void loadAllData()
 	{
-		// TODO
+		ServiceData.loadServiceList();
+		ServiceData.loadAttributeList();
+
+		LayoutData.loadTableList();
+		LayoutData.loadWallList();
+
+		UserData.loadUserList();
+
+		StatisticData.load();
 	}
 	
 }
