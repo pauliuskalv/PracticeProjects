@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Vector;
+import datamanagement.Utilities;
 
 import tables.Table;
 
@@ -16,24 +17,36 @@ public class LayoutData
 
 	String tableDataName = "TableData";		// filenames
 	String wallDataName = "WallData";
-	
-	public void saveTables()
+
+	public void save()
 	{
-		Utilities.saveObject(this.tableList, TableDataName);
+		saveTables();
+		saveWalls();
 	}
 
-	public void saveWalls()
+	public void load()
 	{
-		Utilities.saveObject(this.wallList, WallDataName);
+		loadTableList();
+		loadWallList();
 	}
 	
-	public void loadTableList()
+	private void saveTables()
 	{
-		this.tableList = Utilities.loadObject(this.tableList, tableDataName);
+		Utilities.saveTableVector(this.tableList, tableDataName);
+	}
+
+	private void saveWalls()
+	{
+		Utilities.saveWallVector(this.wallList, wallDataName);
 	}
 	
-	public void loadWallList()
+	private void loadTableList()
 	{
-		this.tableList = Utilities.loadObject(this.wallList, wallDataName);
+		this.tableList = Utilities.loadTableVector(tableDataName);
+	}
+	
+	private void loadWallList()
+	{
+		this.wallList = Utilities.loadWallVector(wallDataName);
 	}
 }

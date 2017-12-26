@@ -5,27 +5,27 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Vector;
 
 public class UserData
 {
-    public int maxUsers = 100;			// should be made an option
-	public String[] users;
+	public Vector<String> users;
 	
 	String userDataName = "UserData";
 
     public UserData()
     {
-        this.users  = new String[maxUsers];
+        this.users  = new Vector<String>();
     }
 
     public void save()
 	{
-		Utilities.saveObject(this.users, userDataName);
+		Utilities.saveStringVector(this.users, userDataName);
 	}
 	
 	public void load()
 	{
-		this.users = Utilities.loadObject(userDataName);
+		this.users = Utilities.loadStringVector(userDataName);
     }
     
 }

@@ -22,12 +22,12 @@ public class StatisticData
 	
 	public void save()
 	{
-		Utilities.saveObject(dayList, filename);
+		Utilities.saveDayVector(dayList, filename);
 	}
 	
-	public void load() throws IOException, ClassNotFoundException
+	public void load()
 	{
-		this.dayList = Utilites.loadObject(filename);
+		this.dayList = Utilities.loadDayVector(filename);
 	}
 	
 	

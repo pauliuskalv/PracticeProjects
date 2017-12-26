@@ -50,23 +50,37 @@ public class ServiceData
 		fullList.remove(service);
 	}
 
-	public void saveServiceList()
+	// saving and loading
+
+	public void save()
 	{
-		Utilites.saveObject(this.fullList, this.ServiceDataName);
+		saveServiceList();
+		saveAttributes();
 	}
 
-	public void saveAttributes()
+	public void load()
 	{
-		Utilities.saveObject(this.attributeList, this.attributeDataName);
-	}
-	
-	public void loadServiceList()
-	{
-		this.fullList = Utilites.loadObject(ServiceDataName);
+		loadServiceList();
+		loadAttributeList();
 	}
 
-	public void loadAttributeList()
+	private void saveServiceList()
 	{
-		this attributeList = Utilities.loadObject(attributeDataName);
+		Utilities.saveServiceVector(this.fullList, this.serviceDataName);
+	}
+
+	private void saveAttributes()
+	{
+		Utilities.saveStringVector(this.attributeList, this.attributeDataName);
+	}
+
+	private void loadServiceList()
+	{
+		this.fullList = Utilities.loadServiceVector(serviceDataName);
+	}
+
+	private void loadAttributeList()
+	{
+		this.attributeList = Utilities.loadStringVector(attributeDataName);
 	}
 }
