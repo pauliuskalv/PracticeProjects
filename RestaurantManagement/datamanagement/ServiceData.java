@@ -9,19 +9,27 @@ import java.util.Vector;
 
 public class ServiceData
 {
-	public Vector<Service> fullList = new Vector<Service>();		// product and service list
-	public Vector<String> attributeList = new Vector<String>();		// list of all used attributes
+	public Vector<Service> fullList;			// product and service list
+	public Vector<String> attributeList;		// list of all used attributes
 
-	String serviceDataName = "ServiceList";
-	String attributeDataName = "AttributeData";
+	private String serviceDataName;
+	private String attributeDataName;
+
+	public ServiceData()
+	{
+		fullList = new Vector<Service>();
+		attributeList = new Vector<String>();
+		serviceDataName = "ServiceList";
+		attributeDataName = "AttributeData";
+	}
 	
-	public void create(String name, double price)
+	public void create(String name, double price) 			// creates new service and adds it to the list
 	{
 		Service service = new Service(name, price);
 		fullList.add(service);
 	}
 
-	public void create(String name, double price, Vector<String> attributes, int time)	// could be optimised to use this
+	public void create(String name, double price, Vector<String> attributes, int time)
 	{
 		Product product = new Product(name, price, attributes, time);
 		
@@ -36,7 +44,7 @@ public class ServiceData
 					same++;
 				}
 			}
-			// if attribute isnt the same as every other in the already used attribute list
+			// if attribute isn`t the same as every other in the already used attribute list
 			if(same == attributeList.size())
 			{
 				attributeList.add(newAttribute);
@@ -51,7 +59,6 @@ public class ServiceData
 	}
 
 	// saving and loading
-
 	public void save()
 	{
 		saveServiceList();

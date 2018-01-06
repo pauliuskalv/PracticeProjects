@@ -34,15 +34,13 @@ public class Customer
 	{
 		this.orders = orders;
 		this.estimate = getTimeToWait(orders);
-		int i = 0;
 		for(Service order : orders)
 		{
 			for(Service fromMenu : data.fullList)
 			{
 				if(order.equals(fromMenu))
 				{
-					i = data.fullList.indexOf(fromMenu);
-					day.amountOfEverySold[i]++; 
+					day.amountOfEverySold[data.fullList.indexOf(fromMenu)]++;
 				}
 			}
 		}
@@ -77,7 +75,7 @@ public class Customer
 		this.late = false;
 	}
 	
-	public void done(Restaurant restaurant)						// waiting to leave
+	public void waitingToLeave(Restaurant restaurant)
 	{
 		this.status = CustomerStatus.LookingToCheckout;
 		Receipt receipt = new Receipt(this.orders);
@@ -91,7 +89,5 @@ public class Customer
 				restaurant.currentDay.productsSold++;
 			}
 		}
-		
 	}
-	
 }

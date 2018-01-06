@@ -18,7 +18,4 @@ public class Product extends Service
 	{
 		return time;
 	}
-	
-
-
 }

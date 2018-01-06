@@ -6,6 +6,9 @@ import tables.Day;
 
 public class Statistics
 {
+	 private int WEEK = 7;
+	 private int MONTH = 30; 			// TODO: make a method that sets month`s number of days
+	 private int YEAR = 365; 			// TODO: make a method that compensates for leap years
 
 	//--------------------------------------
 
@@ -76,11 +79,21 @@ public class Statistics
 		double[] sum = new double[serviceData.fullList.size()];
 		for(Day day : days)
 		{
+			/*
 			for(int i = 0; i < serviceData.fullList.size(); i++)
 			{
 				sum[i] += serviceData.fullList.elementAt(i).price * day.amountOfEverySold[i];
 			}
+			*/
+			for(Service service : serviceData.fullList) 		// simple for is clearer than foreach in my opinion
+			{
+				sum[serviceData.fullList.indexOf(service)] += service.price *
+						day.amountOfEverySold[serviceData.fullList.indexOf(service)];
+			}
 		}
+
+
+
 		return sort(serviceData.fullList, sum);
 	}
 
@@ -139,7 +152,8 @@ public class Statistics
 		{
 			for(String attribute : service.attributes)
 			{
-				attributeAmount[serviceData.attributeList.indexOf(attribute)] += amount[serviceData.fullList.indexOf(service)];
+				attributeAmount[serviceData.attributeList.indexOf(attribute)] +=
+						amount[serviceData.fullList.indexOf(service)];
 			}
 		}
 
@@ -263,7 +277,7 @@ public class Statistics
 	public Vector<Day> getWeek(Vector<Day> days)
 	{
 		Vector<Day> week = new Vector<Day>();
-		if(days.size() > 7)
+		if(days.size() > WEEK)
 		{
 			for(int i = days.size(); i > days.size() - 7; i--)
 			{
@@ -280,7 +294,7 @@ public class Statistics
 	public Vector<Day> getMonth(Vector<Day> days)
 	{
 		Vector<Day> month = new Vector<Day>();
-		if(days.size() > 30)
+		if(days.size() > MONTH)
 		{
 			for(int i = days.size(); i > days.size() - 30; i--)
 			{
@@ -297,7 +311,7 @@ public class Statistics
 	public Vector<Day> getYear(Vector<Day> days)
 	{
 		Vector<Day> year = new Vector<Day>();
-		if(days.size() > 365)
+		if(days.size() > YEAR)
 		{
 			for(int i = days.size(); i > days.size() - 365; i--)
 			{
