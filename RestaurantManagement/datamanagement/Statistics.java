@@ -91,9 +91,6 @@ public class Statistics
 						day.amountOfEverySold[serviceData.fullList.indexOf(service)];
 			}
 		}
-
-
-
 		return sort(serviceData.fullList, sum);
 	}
 
@@ -185,11 +182,12 @@ public class Statistics
 	// calculates how many units of every service has been sold
 	public int[] getAmountOfEverySold(Vector<Day> days, ServiceData serviceData)
 	{
-		int[] amount = new int[serviceData.fullList.size()];
+		int listSize = serviceData.fullList.size();
+		int[] amount = new int[listSize];
 
 		for(Day day : days)
 		{
-			for(int i = 0; i < serviceData.fullList.size(); i++)
+			for(int i = 0; i < listSize; i++)
 			{
 				amount[i] += day.amountOfEverySold[i];
 			}
@@ -210,6 +208,7 @@ public class Statistics
 				attributeAmount[serviceData.attributeList.indexOf(attribute)] += amount[serviceData.fullList.indexOf(service)];
 			}
 		}
+
 		return attributeAmount;
 	}
 
@@ -217,11 +216,12 @@ public class Statistics
 	public Vector<DataNode> sort(Vector<Service> vector, double[] value)
 	{
 		Vector<DataNode> sorted = new Vector<DataNode>();
-		while(sorted.size() < vector.size())
+		int inListSize = vector.size();
+		while(sorted.size() < inListSize)
 		{
 			double max = 0;
 			int maxIndex = 0;
-			for(int i = 0; i < vector.size(); i++)
+			for(int i = 0; i < inListSize; i++)
 			{
 				if(value[i] > max)
 				{
@@ -231,17 +231,19 @@ public class Statistics
 			}
 			sorted.add(new DataNode(vector.elementAt(maxIndex).name, value[maxIndex]));
 		}
+
 		return sorted;
 	}
 
 	public Vector<DataNode> sortAttributes(Vector<String> vector, int[] value)
 	{
 		Vector<DataNode> sorted = new Vector<DataNode>();
-		while(sorted.size() < vector.size())
+		int inListSize = vector.size();
+		while(sorted.size() < inListSize)
 		{
 			double max = 0;
 			int maxIndex = 0;
-			for(int i = 0; i < vector.size(); i++)
+			for(int i = 0; i < inListSize; i++)
 			{
 				if(value[i] > max)
 				{
@@ -251,17 +253,19 @@ public class Statistics
 			}
 			sorted.add(new DataNode(vector.elementAt(maxIndex), value[maxIndex]));
 		}
+
 		return sorted;
 	}
 
 	public Vector<DataNode> sort(Vector<Service> vector, int[] value)
 	{
 		Vector<DataNode> sorted = new Vector<DataNode>();
-		while(sorted.size() < vector.size())
+		int inListSize = vector.size();
+		while(sorted.size() < inListSize)
 		{
 			double max = 0;
 			int maxIndex = 0;
-			for(int i = 0; i < vector.size(); i++)
+			for(int i = 0; i < inListSize; i++)
 			{
 				if(value[i] > max)
 				{
@@ -271,15 +275,17 @@ public class Statistics
 			}
 			sorted.add(new DataNode(vector.elementAt(maxIndex).name, value[maxIndex]));
 		}
+
 		return sorted;
 	}
 
 	public Vector<Day> getWeek(Vector<Day> days)
 	{
 		Vector<Day> week = new Vector<Day>();
-		if(days.size() > WEEK)
+		int numberOfDays = days.size();
+		if(numberOfDays > WEEK)
 		{
-			for(int i = days.size(); i > days.size() - 7; i--)
+			for(int i = numberOfDays; i > numberOfDays - 7; i--)
 			{
 				week.add(days.elementAt(i));
 			}
@@ -288,15 +294,17 @@ public class Statistics
 		{
 			week = days;
 		}
+
 		return week;
 	}
 
 	public Vector<Day> getMonth(Vector<Day> days)
 	{
 		Vector<Day> month = new Vector<Day>();
-		if(days.size() > MONTH)
+		int numberOfDays = days.size();
+		if(numberOfDays > MONTH)
 		{
-			for(int i = days.size(); i > days.size() - 30; i--)
+			for(int i = numberOfDays; i > numberOfDays - 30; i--)
 			{
 				month.add(days.elementAt(i));
 			}
@@ -305,15 +313,17 @@ public class Statistics
 		{
 			month = days;
 		}
+
 		return month;
 	}
 
 	public Vector<Day> getYear(Vector<Day> days)
 	{
 		Vector<Day> year = new Vector<Day>();
-		if(days.size() > YEAR)
+		int numberOfDays = days.size();
+		if(numberOfDays > YEAR)
 		{
-			for(int i = days.size(); i > days.size() - 365; i--)
+			for(int i = numberOfDays; i > numberOfDays - 365; i--)
 			{
 				year.add(days.elementAt(i));
 			}
@@ -322,6 +332,7 @@ public class Statistics
 		{
 			year = days;
 		}
+
 		return year;
 	}
 
