@@ -1,37 +1,26 @@
 package tables;
 
 import java.util.Vector;
-
-import datamanagement.Service;
-import datamanagement.ServiceData;
+import dataManagement.Service;
 
 public class Table 
 {
+	
 	Customer customer;
+	
 	boolean occupied;
 	
-	int x;					// assuming that user interface will use coordinate system
-	int y;
-	
-	public Table(Restaurant restaurant, int x, int y)
+	public void newCustomer(Vector<Service> orders)
 	{
-		restaurant.tables.add(this);
-		this.x = x;
-		this.y = y;
+		this.customer = new Customer(orders);
 	}
 	
-	public void newCustomer(Restaurant restaurant, Vector<Service> orders, ServiceData serviceData, Day day)
+	public void customerQuit()
 	{
-		this.customer = new Customer(orders, serviceData, day);
-		restaurant.customers.add(this.customer);
-		this.occupied = true;
-		restaurant.currentDay.tablesOccupied++;
-	}
-	
-	public void customerQuit(Restaurant restaurant)
-	{
-		restaurant.customers.remove(this.customer);
 		this.customer = null;
-		this.occupied = false;
 	}
+	// finalize
+	
+	
+	
 }
