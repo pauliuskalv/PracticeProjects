@@ -9,6 +9,7 @@ import tables.Enums.CustomerStatus;
 public class Customer 
 {
 	// time variables
+  
 	int waiting;			// time spent waiting for delivery
 	int consuming;			// time spent consuming a product for a sense of when to bring receipt
 	int checkout;			// time spent waiting for receipt
@@ -16,6 +17,7 @@ public class Customer
 	int estimate;			// estimated time to deliver a product
 	
 	CustomerStatus status;
+
 	boolean late = false;
 
 	Vector<Service> orders;
@@ -64,6 +66,7 @@ public class Customer
 	public void lateCheck()
 	{
 		if(this.waiting > this.estimate)
+
 		{
 			this.late = true;
 		}
